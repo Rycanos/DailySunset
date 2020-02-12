@@ -1,0 +1,35 @@
+import { Component, ElementRef } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  numArr = Array.from(Array(100), (_,x) => x);
+
+  constructor(public element: ElementRef, private http: HttpClient) {}
+
+  ngOnInit () {
+    this.http.get('http://192.168.1.25:8000/api/nbImg').subscribe(
+      res => {
+        console.log(res);
+      }
+    );
+  }
+
+  get numImages(): number {
+    return this.element.nativeElement.querySelectorAll('img').length;
+  }
+
+  onTakePicture() {
+    this.http.get('http://192.168.1.25:8000/api/takePicture').subscribe(
+      res => {
+        console.log(res);
+      }
+    )
+  }
+}

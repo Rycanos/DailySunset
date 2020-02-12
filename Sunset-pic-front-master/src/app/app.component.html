@@ -1,0 +1,19 @@
+<hr/>
+<h1 style="font-size: 98px; text-align: center">Daily Sunset Pictures</h1>
+<div>
+  <button style="width: 10%; margin-left: 45%" (click)="onTakePicture()">Take Picture</button>
+</div>
+<hr/>
+
+<div *ngFor="let i of numArr">
+  <ngui-in-view>
+    <!--
+    <img *ngIf src="http://localhost/api/{{i}}" height="33%">
+  -->
+    <img *ngIf src="http://192.168.1.25:4200/api/img/{{i}}" height="33%" width="100%">
+  </ngui-in-view>
+</div>
+
+<div class="num-images">
+  Brought to you by V and A
+</div>
